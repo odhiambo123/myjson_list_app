@@ -5,6 +5,13 @@ import 'dart:convert';
 
 void main() => runApp(new MyApp());
 
+class myModel {
+  final int id;
+  final String name, symptoms;
+
+  myModel(this.id, this.name, this.symptoms);
+}
+
 class MyApp extends StatefulWidget {
   @override
   _MyAppState createState() => _MyAppState();
@@ -12,7 +19,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   final String url =
-      "https://raw.githubusercontent.com/odhiambo123/myjson_list/master/main.json";
+      "https://raw.githubusercontent.com/odhiambo123/myjson_list_app/master/main.json";
 
   List<myModel> myAllData = [];
 
@@ -28,7 +35,7 @@ class _MyAppState extends State<MyApp> {
       var jsonBody = json.decode(responeBody);
       for (var data in jsonBody) {
         myAllData.add(new myModel(
-            data['id'], data['name'], data['symptoms'], data['facts']));
+            data['id'], data['name'], data['symptoms']));
       }
       setState(() {});
       myAllData.forEach((someData) => print("Name : ${someData.name}"));
@@ -72,7 +79,7 @@ class _MyAppState extends State<MyApp> {
                     new Padding(padding: new EdgeInsets.symmetric(vertical: 3.0)),
                     new Text('Symptoms : ${myAllData[index].symptoms}'),
                     new Padding(padding: new EdgeInsets.symmetric(vertical: 3.0)),
-                    new Text('Facts : ${myAllData[index].facts}'),
+                //    new Text('Facts : ${myAllData[index].facts}'),
                     new Padding(padding: new EdgeInsets.symmetric(vertical: 3.0)),
                   ],
                 ),
@@ -81,11 +88,4 @@ class _MyAppState extends State<MyApp> {
           );
         });
   }
-}
-
-class myModel {
-  final int id;
-  final String name, symptoms, facts;
-
-  myModel(this.id, this.name, this.symptoms, this.facts);
 }
