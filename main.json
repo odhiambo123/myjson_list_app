@@ -1,5 +1,4 @@
-{
-   "diseases":[
+[
       {
          "id":107,
          "name":"Rabies - WHO",
@@ -945,4 +944,3 @@
          "is_active":true
       }
    ]
-}
